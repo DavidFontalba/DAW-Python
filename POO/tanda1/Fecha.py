@@ -1,6 +1,9 @@
 class Fecha:
     """
-     Versión 1.0
+     * Versión 2.0
+     * -Añadidos respecto a la 1.0
+     *   · Añadido el método __str__
+     *
      * Clase para manejar fechas en cadenas de caracteres.
      *
      * El formato de la cadena es: AAAAMMDD.
@@ -434,3 +437,6 @@ class Fecha:
         if Fecha.esBisiesto(self):
             dias_mes_este_año[1] += 1  # hay 29 días en febrero en este caso
         return dias_mes_este_año
+
+    def __str__(self):
+        return Fecha.fecha(self)
