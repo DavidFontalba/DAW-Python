@@ -405,9 +405,9 @@ class Fecha:
          * @param fecha
          * @return fecha formateada
         """
-        day = Fecha.dia(self)
-        month = Fecha.nombreMes(self)
-        year = Fecha.anyo(self)
+        day = self.__dia
+        month = self.__mes
+        year = self.__anyo
         fechaFormat = (str(day) + " de " + str(month) + " de " + str(
             year))  # Original: String fechaFormat = day + " de " + month + " de " + year
         return fechaFormat
