@@ -32,6 +32,33 @@ class Fecha:
         self.__mes = mes
         self.__dia = dia
 
+    @property
+    def dia(self):
+        return self.__dia
+
+    @dia.setter
+    def dia(self, value):
+        assert Fecha.fechaCorrecta(Fecha.fecha(self.__anyo, self.__mes,value))
+        self.__dia = value
+
+    @property
+    def mes(self):
+        return self.__mess
+
+    @dia.setter
+    def mes(self, value):
+        assert Fecha.fechaCorrecta(Fecha.fecha(self.__anyo, value, self.__dia))
+        self.__mes = value
+
+    @property
+    def anyo(self):
+        return self.__anyo
+
+    @dia.setter
+    def anyo(self, value):
+        assert Fecha.fechaCorrecta(Fecha.fecha(value, self.__mes, self.__dia))
+        self.__anyo = value
+
     #Métodos estáticos
     @staticmethod
     def fechaCorrecta(fecha):
