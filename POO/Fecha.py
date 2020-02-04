@@ -236,7 +236,7 @@ class Fecha:
                 return True
         return False
 
-    def fechaMas1Dia(self):
+    def __fechaMas1Dia(self):
         """
          *
          * Suma un día a la fecha que se pasa como parámetro y la devuelve.
@@ -283,32 +283,29 @@ class Fecha:
             else:
                 day += 1
 
-        day = str(day)
-        month = str(month)
-
-        # dia
-        if len(day) < 2:
-            day = "0" + day
-        # mes
-        if len(month) < 2:
-            month = "0" + month
-
         return Fecha(year, month, day)
 
-    def fechaMasNDias(self, dias):
+    def __add__(self, dias):
         """
          * Suma una serie de días a la fecha que se pasa como parámetro y la devuelve
          * @param fecha
          * @param dias
          * @return nueva fecha
         """
-        nuevaFecha = Fecha.fecha(self)
-        for i in range(dias):  # for original: int i=0; i<dias; i+=1:
-            nuevaFecha = Fecha.fechaMas1Dia(nuevaFecha)
+        nuevaFecha = self
 
-        return Fecha(Fecha.anyo(nuevaFecha),Fecha.mes(nuevaFecha),Fecha.dia(nuevaFecha))
+        if dias > 0:
+            for i in range(dias):  # for original: int i=0; i<dias; i+=1:
+                nuevaFecha = nuevaFecha.__fechaMas1Dia()
+        else:
+            for i in range(abs(dias)):
+                nuevaFecha = nuevaFecha.__fechaMenos1Dia()
+        return nuevaFecha
 
-    def fechaMenos1Dia(self):
+    def __radd__(self, dias):
+        return self + dias
+
+    def __fechaMenos1Dia(self):
         """
          * Resta un día a la fecha que se pasa como parámetro y la devuelve.
          *
@@ -356,19 +353,9 @@ class Fecha:
             else:
                 day -= 1
 
-        day = str(day)
-        month = str(month)
-
-        # dia
-        if len(day) < 2:
-            day = "0" + day
-        # mes
-        if len(month) < 2:
-            month = "0" + month
-
         return Fecha(year, month, day)
 
-    def fechaMenosNDias(self, dias):
+    def __sub__(self, dias):
         """
          * Resta una serie de días a la fecha que se pasa como parámetro y la devuelve.
          *
@@ -376,12 +363,7 @@ class Fecha:
          * @param dias
          * @return objeto con la nueva fecha
         """
-        nuevaFecha = Fecha.fecha(self)
-
-        for i in range(dias):  # for original: int i=0; i<dias; i+=1:
-            nuevaFecha = Fecha.fechaMenos1Dia(nuevaFecha)
-
-        return Fecha(Fecha.anyo(nuevaFecha),Fecha.mes(nuevaFecha),Fecha.dia(nuevaFecha))
+        return self + -1*dias
 
     def comparaFechas(self, otra):
         """
