@@ -466,4 +466,4 @@ class Fecha:
         return dias_mes_este_año
 
     def __str__(self):
-        return Fecha.fecha(self)
+        return Fecha.fechaFormateada(self)
