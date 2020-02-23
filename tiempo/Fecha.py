@@ -8,11 +8,11 @@
   *
   * 1. fechaCorrecta: dice si la fecha que se pasa como parámetro es correcta.
   *
-  * 2. fechaMas1Dia: suma un día a la fecha que se pasa como parámetro y lo devuelve.
+  * 2. __fechaMas1Dia: suma un día a la fecha que se pasa como parámetro y lo devuelve.
   *
   * 3. fechaMasNDias: suma una serie de días a la fecha que se pasa como parámetro y lo devuelve.
   *
-  * 4. fechaMenos1Dia: resta un día a la fecha que se pasa como parámetro y lo devuelve.
+  * 4. __fechaMenos1Dia: resta un día a la fecha que se pasa como parámetro y lo devuelve.
   *
   * 5. fechaMenosNDias: resta una serie de días a la fecha que se pasa como parámetro y lo devuelve.
   *
@@ -400,11 +400,11 @@ def dia(fecha):
   *
   * 1. fechaCorrecta: dice si la fecha que se pasa como parámetro es correcta.
   *
-  * 2. fechaMas1Dia: suma un día a la fecha que se pasa como parámetro y lo devuelve.
+  * 2. __fechaMas1Dia: suma un día a la fecha que se pasa como parámetro y lo devuelve.
   *
   * 3. fechaMasNDias: suma una serie de días a la fecha que se pasa como parámetro y lo devuelve.
   *
-  * 4. fechaMenos1Dia: resta un día a la fecha que se pasa como parámetro y lo devuelve.
+  * 4. __fechaMenos1Dia: resta un día a la fecha que se pasa como parámetro y lo devuelve.
   *
   * 5. fechaMenosNDias: resta una serie de días a la fecha que se pasa como parámetro y lo devuelve.
   *
