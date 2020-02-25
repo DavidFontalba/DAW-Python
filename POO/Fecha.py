@@ -1,3 +1,8 @@
+class FechaErronea:
+
+    def __init__(self, mensaje):
+        self.mensaje = mensaje
+
 class Fecha:
     """
      * Versión 2.0
@@ -14,7 +19,7 @@ class Fecha:
      * Basado en la colección de funciones "Fecha.py" del examen del primer trimestre de Programación
      *
     """
-    __num_objetos = 0  # Contador de objetos tipo Fecha creados
+    __num_objetos = 0  # Contador de objetos tipo Fecha creado
 
     def __init__(self, anyo, mes, dia):
         """
@@ -26,7 +31,8 @@ class Fecha:
         Fecha.__num_objetos += 1
 
         fecha = Fecha.fecha(anyo, mes, dia)
-        assert self.fechaCorrecta(fecha) #Compruebo que la fecha es correcta para poder crear el objeto
+        if not self.fechaCorrecta(fecha): #Compruebo que la fecha es correcta para poder crear el objeto
+            raise FechaErronea("Día, mes o año introducidos incorrectamente.")
 
         self.__anyo = anyo
         self.__mes = mes
@@ -38,7 +44,8 @@ class Fecha:
 
     @dia.setter
     def dia(self, value):
-        assert Fecha.fechaCorrecta(Fecha.fecha(self.__anyo, self.__mes,value))
+        if not self.fechaCorrecta(Fecha.fecha(self.__anyo, self.__mes, self.__dia)):
+            raise FechaErronea("Día, mes o año introducidos incorrectamente.")
         self.__dia = value
 
     @property
@@ -47,7 +54,8 @@ class Fecha:
 
     @dia.setter
     def mes(self, value):
-        assert Fecha.fechaCorrecta(Fecha.fecha(self.__anyo, value, self.__dia))
+        if not self.fechaCorrecta(Fecha.fecha(self.__anyo, self.__mes, self.__dia)):
+            raise FechaErronea("Día, mes o año introducidos incorrectamente.")
         self.__mes = value
 
     @property
@@ -56,7 +64,8 @@ class Fecha:
 
     @dia.setter
     def anyo(self, value):
-        assert Fecha.fechaCorrecta(Fecha.fecha(value, self.__mes, self.__dia))
+        if not self.fechaCorrecta(Fecha.fecha(self.__anyo, self.__mes,self.__dia)):
+            raise FechaErronea("Día, mes o año introducidos incorrectamente.")
         self.__anyo = value
 
     #Métodos estáticos
