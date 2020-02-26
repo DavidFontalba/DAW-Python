@@ -1,6 +1,6 @@
-class FechaErronea:
-
+class FechaErronea(Exception):
     def __init__(self, mensaje):
+        Exception.__init__(self)
         self.mensaje = mensaje
 
 class Fecha:
@@ -30,8 +30,7 @@ class Fecha:
         """
         Fecha.__num_objetos += 1
 
-        fecha = Fecha.fecha(anyo, mes, dia)
-        if not self.fechaCorrecta(fecha): #Compruebo que la fecha es correcta para poder crear el objeto
+        if not Fecha.fechaCorrecta( Fecha.fechaFormat(anyo, mes, dia) ): #Compruebo que la fecha es correcta para poder crear el objeto
             raise FechaErronea("Día, mes o año introducidos incorrectamente.")
 
         self.__anyo = anyo
@@ -44,28 +43,28 @@ class Fecha:
 
     @dia.setter
     def dia(self, value):
-        if not self.fechaCorrecta(Fecha.fecha(self.__anyo, self.__mes, self.__dia)):
-            raise FechaErronea("Día, mes o año introducidos incorrectamente.")
+        if not Fecha.fechaCorrecta(Fecha.fechaFormat(self.__anyo, self.__mes, value)):
+            raise FechaErronea("Día introducido incorrectamente.")
         self.__dia = value
 
     @property
     def mes(self):
         return self.__mess
 
-    @dia.setter
+    @mes.setter
     def mes(self, value):
-        if not self.fechaCorrecta(Fecha.fecha(self.__anyo, self.__mes, self.__dia)):
-            raise FechaErronea("Día, mes o año introducidos incorrectamente.")
+        if not Fecha.fechaCorrecta(Fecha.fechaFormat(self.__anyo, value, self.__dia)):
+            raise FechaErronea("Mes introducido incorrectamente.")
         self.__mes = value
 
     @property
     def anyo(self):
         return self.__anyo
 
-    @dia.setter
+    @anyo.setter
     def anyo(self, value):
-        if not self.fechaCorrecta(Fecha.fecha(self.__anyo, self.__mes,self.__dia)):
-            raise FechaErronea("Día, mes o año introducidos incorrectamente.")
+        if not Fecha.fechaCorrecta(Fecha.fechaFormat(value , self.__mes, self.__dia)):
+            raise FechaErronea("Año introducido incorrectamente.")
         self.__anyo = value
 
     #Métodos estáticos
@@ -122,7 +121,7 @@ class Fecha:
         return True
 
     @staticmethod
-    def fecha(a, m, d):
+    def fechaFormat(a, m, d):
         """
          * Devuelve una cadena en formato AAAAMMDD
          * @param d, m, a
@@ -145,7 +144,7 @@ class Fecha:
             año_ = "0" + año_
         return año_ + mes_ + dia_
 
-    def fecha(self):
+    def fechaObj(self):
         """
          * Devuelve una cadena en formato AAAAMMDD
          * @param self
@@ -383,8 +382,8 @@ class Fecha:
          * @param Otro objeto Fecha
          * @return entero negativo, cero o un entero positivo.
         """
-        fecha1Int = int(Fecha.fecha(self))
-        fecha2Int = int(Fecha.fecha(otra))
+        fecha1Int = int(Fecha.fechaFormat(self))
+        fecha2Int = int(Fecha.fechaFormat(otra))
 
         return fecha1Int - fecha2Int
 
