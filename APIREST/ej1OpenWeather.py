@@ -3,6 +3,13 @@ import datetime
 import requests
 import os
 
+"""
+1. Usando esta API de OpenWeather que nos da el pronóstico del tiempo para una ciudad que se le pide al usuario de los
+siguientes cinco días, mostrar:
+
+Temperatura media, mínima y máxima (en grados Celsius) para cada día y global.
+Tened en cuenta que las respuestas de esta api referentes a los días y horas usan el tiempo en formato UNIX (UTC).
+"""
 
 def mediaArrayInt(vector):
     sumatorio = 0
@@ -11,19 +18,11 @@ def mediaArrayInt(vector):
     media = sumatorio / len(vector)
     return media
 
-
-"""
-1. Usando esta API de OpenWeather que nos da el pronóstico del tiempo para una ciudad que se le pide al usuario de los
-siguientes cinco días, mostrar:
-
-Temperatura media, mínima y máxima (en grados Celsius) para cada día y global.
-Tened en cuenta que las respuestas de esta api referentes a los días y horas usan el tiempo en formato UNIX (UTC).
-"""
 # Datos
 url = "https://api.openweathermap.org/data/2.5/forecast"
 print("Este programa te dará el pronóstico del tiempo de una ciudad para los próximos cinco días")
 ciudad = input("Introduce una ciudad: ")
-api_key = os.getenv('OPENWEATHERID')
+api_key = os.getenv('OPENWEATHER_ID')
 p = {'q': ciudad, 'appid': api_key, 'units': 'metric'}
 
 # Petición
