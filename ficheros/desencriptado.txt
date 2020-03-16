@@ -1,0 +1,7 @@
+Hola, esto es una prueba para encriptar.
+
+Las Ñ y los símbolos no deberían encriptarse, como ¿?¡!
+O los números 12345, y tildes áéíóú,
+
+porque así es el método César,
+Las ZzYy funcionan bien.
