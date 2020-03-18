@@ -11,6 +11,7 @@ Si el fichero origen no existe (da error al abrirlo como lectura) el programa te
 Si en el fichero destino no se puede escribir da error al abrirlo como lectura) el programa termina con un mensaje de error y código 2.
 Para desencriptar necesitas una clave que debes pedir al usuario.
 ¿Se te ocurre alguna forma de desencriptar este archivo sin pedir clave? Coméntala, y si te atreves... ¡impleméntala!
+@author David Galván Fontalba
 @version 1.0
 """
 
@@ -31,7 +32,10 @@ def cesar_decrypt(line, displacement):
         if character in string.ascii_letters:
             character_is_in_pos = string.ascii_letters.index(character)
             decrypted_character_is_in = (character_is_in_pos - displacement) % len(string.ascii_letters)
-            decrypted_character = string.ascii_letters[decrypted_character_is_in]
+            if decrypted_character_is_in < 0:
+                decrypted_character = string.ascii_letters[len(string.ascii_letters) + decrypted_character_is_in]
+            else:
+                decrypted_character = string.ascii_letters[decrypted_character_is_in]
         else:
             decrypted_character = character
         # añadimos a la cadena

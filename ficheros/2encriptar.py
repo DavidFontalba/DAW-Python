@@ -10,6 +10,7 @@ Si el programa recibe un solo parámetro guardará la información encriptada en
 Si el fichero origen no existe (da error al abrirlo como lectura) el programa termina con un mensaje de error y código 2.
 Si en el fichero destino no se puede escribir da error al abrirlo como lectura) el programa termina con un mensaje de error y código 2.
 Para encriptar usa el método César, necesitarás una clave que debes pedir al usuario.
+@author David Galván Fontalba
 """
 
 """
