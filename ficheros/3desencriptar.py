@@ -106,7 +106,9 @@ if displacement.upper() != "Z":
     for line in origin:
         final_driver.write(cesar_decrypt(line, int(displacement)))
     final_driver.close()
-else: #Probamos a desencriptar automaticamenteç
+
+    #V.0.1 --> Mejorable para que no te pregunte en cada iteración si está bien o no.
+else: #Probamos a desencriptar automaticamente
     displacement = 1
     while True:
 
